@@ -1,0 +1,33 @@
+<div class="ui-g">
+  <div class="ui-g-offset-4"></div>
+  <div class="ui-g-4">
+    <p-fieldset legend="Login">
+      <form [formGroup]="frmLogin" (ngSubmit)="onSubmit()">
+        <div class="ui-g">
+          <div class="ui-g-12">
+          <span class="ui-float-label">
+              <input id="username" type="text" pInputText formControlName="email">
+              <label for="username">Email</label>
+          </span>
+          </div>
+          <div class="ui-g-12">
+          <span class="ui-float-label">
+              <input id="password"
+                     promptLabel="Informe a senha"
+                     weakLabel="Senha Fraca"
+                     mediumLabel="Senha Média"
+                     strongLabel="Senha Forte"
+                     type="password" pPassword formControlName="password">
+              <label for="password">Senha</label>
+          </span>
+          </div>
+          <div class="ui-g-12">
+            <button pButton type="submit" label="Entrar" [disabled]="!frmLogin.valid"></button>
+          </div>
+
+          <p-growl [(value)]="msgs"></p-growl>
+        </div>
+      </form>
+    </p-fieldset>
+  </div>
+</div>

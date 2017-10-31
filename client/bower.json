@@ -1,0 +1,20 @@
+{
+  "name": "ngmongodb-crud",
+  "description": "",
+  "main": "",
+  "authors": [
+    "Vinicius <viniciusalvess@gmail.com>"
+  ],
+  "license": "MIT",
+  "homepage": "",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "MDBootstrap": "^4.4.1"
+  }
+}
