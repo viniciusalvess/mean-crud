@@ -17,6 +17,9 @@ import { HttpClientModule } from '@angular/common/http';
 import { ReactiveFormsModule } from '@angular/forms';
 import { UserRegisterComponent } from './user-register/user-register.component';
 import {HttpService} from './_services/http.service';
+import { HTTP_INTERCEPTORS } from '@angular/common/http';
+import {TokenInterceptor} from './interceptors/token_interceptor';
+import {AuthService} from './_services/auth.service';
 
 const appRoutes = [
   { path : 'index', component : AppComponent },
@@ -54,7 +57,13 @@ const appRoutes = [
     ),
     InputTextModule, ButtonModule, DataTableModule, DialogModule, FieldsetModule, PasswordModule, MessagesModule, GrowlModule
   ],
-  providers: [HttpService],
+  providers: [AuthService,
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: TokenInterceptor,
+      multi: true
+    }
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

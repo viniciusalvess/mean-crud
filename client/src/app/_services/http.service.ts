@@ -8,13 +8,15 @@ import {AuthService} from './auth.service';
 @Injectable()
 export class HttpService extends Http {
   constructor(backend: XHRBackend, options: RequestOptions) {
-    const token = JSON.parse(localStorage.getItem('token')).token;
+    // const token = JSON.parse(localStorage.getItem('token')).token;
+    const token = localStorage.getItem('token');
     options.headers.set('Authorization', `Bearer ${token}`);
     super(backend, options);
   }
 
   request(url: string | Request, options ?: RequestOptionsArgs): Observable<Response> {
-    const token = JSON.parse(localStorage.getItem('token')).token;
+    // const token = JSON.parse(localStorage.getItem('token')).token;
+    const token = localStorage.getItem('token');
     if (typeof url === 'string') { // meaning we have to add the token to the options, not in url
       if (!options) {
         // let's make option object

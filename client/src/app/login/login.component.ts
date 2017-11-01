@@ -16,17 +16,15 @@ import {MessageService} from 'primeng/components/common/messageservice';
   providers: [AuthService, MessageService]
 })
 export class LoginComponent implements OnInit, OnDestroy {
-  id: any;
-  loginFailMsg: String;
-  paramsSub: any;
+
   frmLogin: FormGroup;
   msgs: Message[] = [];
 
-  constructor(private _auth: AuthService, private _formBuilder: FormBuilder, private _router: Router, private messageService: MessageService) {}
-
-  printConsole(msg: String) {
-    console.log(msg);
-  }
+  constructor(private _auth: AuthService,
+    private _formBuilder: FormBuilder,
+    private _router: Router,
+    private messageService: MessageService
+  ) {}
 
   ngOnInit() {
     this.frmLogin = this._formBuilder.group({
@@ -51,7 +49,7 @@ export class LoginComponent implements OnInit, OnDestroy {
     this._auth.login(this.frmLogin.value.email, this.frmLogin.value.password)
       .subscribe((user) => {
         this._router.navigateByUrl('/dashboard');
-      }, err => this.messageService.add({severity: 'warn', summary: 'Login', detail: err._body }));
+      }, err => this.messageService.add({severity: 'warn', summary: 'Login', detail: err.error }));
   }
 
   ngOnDestroy() {

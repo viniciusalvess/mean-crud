@@ -1,32 +1,35 @@
 import { Injectable } from '@angular/core';
 import { Response } from '@angular/http';
-import { Observable } from 'rxjs/Observable';
 import 'rxjs/add/operator/map';
-import {HttpService} from './http.service';
+import {HttpClient} from '@angular/common/http';
+
+interface User{
+
+}
 
 @Injectable()
 export class AuthService {
-  constructor(private http: HttpService) { }
+
+  private TOKEN_NAME: any = 'token';
+
+  constructor(private http: HttpClient) { }
 
   login(username: string, password: string) {
     return this.http.post('/api/auth/login', {email: username, password: password })
       .map((response: Response) => {
-        const user = response.json();
-        if (user && user._id) {
-          this.setToken(JSON.stringify(user));
-        }
+          this.setToken(JSON.stringify(response));
       });
   }
 
   getToken() {
-    return JSON.parse(localStorage.getItem('token')).token;
+    return localStorage.getItem(this.TOKEN_NAME);
   }
 
   setToken(aToken) {
-    localStorage.setItem('token', aToken);
+      localStorage.setItem(this.TOKEN_NAME, aToken);
   }
 
   logout() {
-    localStorage.removeItem('token');
+    localStorage.removeItem(this.TOKEN_NAME);
   }
 }

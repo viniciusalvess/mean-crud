@@ -22,10 +22,9 @@ function login(aEmail, aPassword) {
 
         if (user && bcrypt.compareSync(aPassword, user.password)) {
             deferred.resolve({
-                _id: user._id,
                 username: user.username,
                 email: user.email,
-                token: jwt.sign({_id: user._id, username: user.username, email: user.email}, config.secret)
+                token: jwt.sign({username: user.username, email: user.email}, config.secret)
             });
         } else {
             deferred.reject('Email ou Senha é inválido.');
