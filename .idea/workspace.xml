@@ -1,13 +1,26 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="27e5b9b8-e1fe-4f7d-a651-a8dcde26cb71" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/client/src/app/interceptors/token_interceptor.ts" />
+    <list default="true" id="27e5b9b8-e1fe-4f7d-a651-a8dcde26cb71" name="Default" comment="Inicio Dashboard, implementação da primeira guard e primeiro http interceptor">
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/client/src/app/dashboard/modulos/principal/principal.component.css" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/client/src/app/dashboard/modulos/principal/principal.component.html" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/client/src/app/dashboard/modulos/principal/principal.component.spec.ts" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/client/src/app/dashboard/modulos/principal/principal.component.ts" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/client/src/app/util/guards/authenticated.guard.ts" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/client/src/app/util/interceptors/auth.interceptor.ts" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/client/src/app/_services/auth.service.ts" afterPath="$PROJECT_DIR$/client/src/app/services/auth.service.ts" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/client/src/app/_services/http.service.ts" afterPath="$PROJECT_DIR$/client/src/app/services/http.service.ts" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/client/src/app/_services/index.ts" afterPath="$PROJECT_DIR$/client/src/app/services/index.ts" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/client/src/app/interceptors/token_interceptor.ts" afterPath="$PROJECT_DIR$/client/src/app/util/interceptors/token_interceptor.ts" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/codeStyleSettings.xml" afterPath="$PROJECT_DIR$/.idea/codeStyleSettings.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/client/src/app/_services/auth.service.ts" afterPath="$PROJECT_DIR$/client/src/app/_services/auth.service.ts" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/client/src/app/_services/http.service.ts" afterPath="$PROJECT_DIR$/client/src/app/_services/http.service.ts" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/client/src/app/app.module.ts" afterPath="$PROJECT_DIR$/client/src/app/app.module.ts" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/client/src/app/dashboard/dashboard.component.html" afterPath="$PROJECT_DIR$/client/src/app/dashboard/dashboard.component.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/client/src/app/dashboard/dashboard.component.ts" afterPath="$PROJECT_DIR$/client/src/app/dashboard/dashboard.component.ts" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/client/src/app/login/login.component.ts" afterPath="$PROJECT_DIR$/client/src/app/login/login.component.ts" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/client/tslint.json" afterPath="$PROJECT_DIR$/client/tslint.json" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/server/controllers/auth_controller.js" afterPath="$PROJECT_DIR$/server/controllers/auth_controller.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/server/routes/users.js" afterPath="$PROJECT_DIR$/server/routes/users.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/server/services/auth.service.js" afterPath="$PROJECT_DIR$/server/services/auth.service.js" />
     </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
@@ -23,66 +36,36 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="users.js" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/server/routes/users.js">
+      <file leaf-file-name="auth.interceptor.ts" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/client/src/app/util/interceptors/auth.interceptor.ts">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="221">
-              <caret line="13" column="0" lean-forward="false" selection-start-line="13" selection-start-column="0" selection-end-line="13" selection-end-column="0" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="auth.service.js" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/server/services/auth.service.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="323">
-              <caret line="32" column="0" lean-forward="true" selection-start-line="32" selection-start-column="0" selection-end-line="32" selection-end-column="0" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="login.component.ts" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/client/src/app/login/login.component.ts">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="714">
-              <caret line="42" column="3" lean-forward="true" selection-start-line="42" selection-start-column="3" selection-end-line="42" selection-end-column="3" />
+            <state relative-caret-position="400">
+              <caret line="34" column="7" lean-forward="false" selection-start-line="34" selection-start-column="7" selection-end-line="34" selection-end-column="7" />
               <folding>
-                <element signature="e#0#59#0" expanded="true" />
+                <element signature="e#0#30#0" expanded="true" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="auth.service.ts" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/client/src/app/_services/auth.service.ts">
+      <file leaf-file-name="app.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/server/app.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="102">
-              <caret line="6" column="0" lean-forward="false" selection-start-line="6" selection-start-column="0" selection-end-line="6" selection-end-column="0" />
+            <state relative-caret-position="17">
+              <caret line="10" column="0" lean-forward="false" selection-start-line="10" selection-start-column="0" selection-end-line="10" selection-end-column="0" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="dashboard.component.ts" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/client/src/app/dashboard/dashboard.component.ts">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="51">
+              <caret line="3" column="48" lean-forward="false" selection-start-line="3" selection-start-column="48" selection-end-line="3" selection-end-column="48" />
               <folding>
-                <element signature="e#0#43#0" expanded="true" />
+                <element signature="e#0#50#0" expanded="true" />
               </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="auth.js" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/server/routes/auth.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="68">
-              <caret line="4" column="33" lean-forward="false" selection-start-line="4" selection-start-column="33" selection-end-line="4" selection-end-column="33" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="index.js" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/server/routes/index.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="85">
-              <caret line="5" column="33" lean-forward="false" selection-start-line="5" selection-start-column="33" selection-end-line="5" selection-end-column="33" />
-              <folding />
             </state>
           </provider>
         </entry>
@@ -90,8 +73,62 @@
       <file leaf-file-name="app.module.ts" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/client/src/app/app.module.ts">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="110">
-              <caret line="50" column="16" lean-forward="true" selection-start-line="50" selection-start-column="16" selection-end-line="50" selection-end-column="16" />
+            <state relative-caret-position="442">
+              <caret line="41" column="4" lean-forward="false" selection-start-line="41" selection-start-column="7" selection-end-line="44" selection-end-column="8" />
+              <folding>
+                <element signature="e#0#58#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="app.component.ts" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/client/src/app/app.component.ts">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="153">
+              <caret line="9" column="1" lean-forward="true" selection-start-line="9" selection-start-column="1" selection-end-line="9" selection-end-column="1" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="app.component.html" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/client/src/app/app.component.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="34">
+              <caret line="2" column="44" lean-forward="false" selection-start-line="2" selection-start-column="44" selection-end-line="2" selection-end-column="44" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="dashboard.component.html" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/client/src/app/dashboard/dashboard.component.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="306">
+              <caret line="18" column="29" lean-forward="true" selection-start-line="18" selection-start-column="29" selection-end-line="18" selection-end-column="29" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="principal.component.ts" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/client/src/app/dashboard/modulos/principal/principal.component.ts">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="332">
+              <caret line="23" column="29" lean-forward="true" selection-start-line="23" selection-start-column="29" selection-end-line="23" selection-end-column="29" />
+              <folding>
+                <element signature="e#0#48#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="principal.component.html" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/client/src/app/dashboard/modulos/principal/principal.component.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="51">
+              <caret line="3" column="8" lean-forward="true" selection-start-line="3" selection-start-column="8" selection-end-line="3" selection-end-column="8" />
               <folding />
             </state>
           </provider>
@@ -109,6 +146,9 @@
   <component name="FindInProjectRecents">
     <findStrings>
       <find>CONSO</find>
+      <find>no-tra</find>
+      <find>TokenInterceptor</find>
+      <find>MenuItem</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -133,24 +173,31 @@
         <option value="$PROJECT_DIR$/src/app/_services/auth.service.ts" />
         <option value="$PROJECT_DIR$/client/src/app/user-register/user-register.component.html" />
         <option value="$PROJECT_DIR$/client/src/index.html" />
-        <option value="$PROJECT_DIR$/client/tslint.json" />
-        <option value="$PROJECT_DIR$/server/routes/users.js" />
         <option value="$PROJECT_DIR$/server/controllers/AuthController.js" />
         <option value="$PROJECT_DIR$/server/routes/auth.js" />
         <option value="$PROJECT_DIR$/server/package.json" />
         <option value="$PROJECT_DIR$/server/app.js" />
         <option value="$PROJECT_DIR$/server/services/http.service.js" />
         <option value="$PROJECT_DIR$/server/config.json" />
-        <option value="$PROJECT_DIR$/server/controllers/auth_controller.js" />
         <option value="$PROJECT_DIR$/client/src/app/login/login.component.html" />
-        <option value="$PROJECT_DIR$/client/src/app/dashboard/dashboard.component.html" />
-        <option value="$PROJECT_DIR$/client/src/app/dashboard/dashboard.component.ts" />
         <option value="$PROJECT_DIR$/client/src/app/_services/http.service.ts" />
         <option value="$PROJECT_DIR$/client/src/app/interceptors/token_interceptor.ts" />
-        <option value="$PROJECT_DIR$/client/src/app/app.module.ts" />
         <option value="$PROJECT_DIR$/client/src/app/login/login.component.ts" />
-        <option value="$PROJECT_DIR$/server/services/auth.service.js" />
+        <option value="$PROJECT_DIR$/server/controllers/auth_controller.js" />
+        <option value="$PROJECT_DIR$/client/tslint.json" />
         <option value="$PROJECT_DIR$/client/src/app/_services/auth.service.ts" />
+        <option value="$PROJECT_DIR$/client/src/app/util/guards/authenticated.guard.ts" />
+        <option value="$PROJECT_DIR$/client/src/app/util/interceptors/token_interceptor.ts" />
+        <option value="$PROJECT_DIR$/server/routes/users.js" />
+        <option value="$PROJECT_DIR$/server/services/auth.service.js" />
+        <option value="$PROJECT_DIR$/client/src/app/util/interceptors/auth.interceptor.ts" />
+        <option value="$PROJECT_DIR$/client/src/app/app.component.html" />
+        <option value="$PROJECT_DIR$/client/src/app/app.component.ts" />
+        <option value="$PROJECT_DIR$/client/src/app/dashboard/dashboard.component.ts" />
+        <option value="$PROJECT_DIR$/client/src/app/dashboard/dashboard.component.html" />
+        <option value="$PROJECT_DIR$/client/src/app/dashboard/modulos/principal/principal.component.html" />
+        <option value="$PROJECT_DIR$/client/src/app/dashboard/modulos/principal/principal.component.ts" />
+        <option value="$PROJECT_DIR$/client/src/app/app.module.ts" />
       </list>
     </option>
   </component>
@@ -219,14 +266,6 @@
               <item name="client" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="app" type="462c0819:PsiDirectoryNode" />
-              <item name="_services" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="ngmongodb-crud" type="b2602c69:ProjectViewProjectNode" />
-              <item name="ngmongodb-crud" type="462c0819:PsiDirectoryNode" />
-              <item name="client" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="app" type="462c0819:PsiDirectoryNode" />
               <item name="dashboard" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
@@ -235,7 +274,8 @@
               <item name="client" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="app" type="462c0819:PsiDirectoryNode" />
-              <item name="interceptors" type="462c0819:PsiDirectoryNode" />
+              <item name="dashboard" type="462c0819:PsiDirectoryNode" />
+              <item name="modulos" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="ngmongodb-crud" type="b2602c69:ProjectViewProjectNode" />
@@ -243,24 +283,14 @@
               <item name="client" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="app" type="462c0819:PsiDirectoryNode" />
-              <item name="login" type="462c0819:PsiDirectoryNode" />
+              <item name="dashboard" type="462c0819:PsiDirectoryNode" />
+              <item name="modulos" type="462c0819:PsiDirectoryNode" />
+              <item name="principal" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="ngmongodb-crud" type="b2602c69:ProjectViewProjectNode" />
               <item name="ngmongodb-crud" type="462c0819:PsiDirectoryNode" />
               <item name="server" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="ngmongodb-crud" type="b2602c69:ProjectViewProjectNode" />
-              <item name="ngmongodb-crud" type="462c0819:PsiDirectoryNode" />
-              <item name="server" type="462c0819:PsiDirectoryNode" />
-              <item name="controllers" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="ngmongodb-crud" type="b2602c69:ProjectViewProjectNode" />
-              <item name="ngmongodb-crud" type="462c0819:PsiDirectoryNode" />
-              <item name="server" type="462c0819:PsiDirectoryNode" />
-              <item name="routes" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="ngmongodb-crud" type="b2602c69:ProjectViewProjectNode" />
@@ -272,8 +302,8 @@
           <select />
         </subPane>
       </pane>
-      <pane id="Scope" />
       <pane id="Scratches" />
+      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -284,13 +314,15 @@
     <property name="node.js.path.for.package.tslint" value="project" />
     <property name="node.js.detected.package.tslint" value="true" />
     <property name="node.js.selected.package.tslint" value="C:\Projetos\Angular\ngmongodb-crud\client\node_modules\tslint" />
+    <property name="settings.editor.selected.configurable" value="preferences.sourceCode" />
   </component>
   <component name="RecentsManager">
-    <key name="MoveFile.RECENT_KEYS">
-      <recent name="C:\Projetos\Angular\ngmongodb-crud\client\src\app\_services" />
-    </key>
     <key name="CopyFile.RECENT_KEYS">
       <recent name="C:\Projetos\Angular\ngmongodb-crud" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Projetos\Angular\ngmongodb-crud\client\src\app\util" />
+      <recent name="C:\Projetos\Angular\ngmongodb-crud\client\src\app\_services" />
     </key>
   </component>
   <component name="RunDashboard">
@@ -327,12 +359,21 @@
       <workItem from="1509361623657" duration="8611000" />
       <workItem from="1509377871553" duration="20066000" />
       <workItem from="1509445130636" duration="2427000" />
-      <workItem from="1509544211192" duration="11331000" />
+      <workItem from="1509544211192" duration="11994000" />
+      <workItem from="1509624183097" duration="17644000" />
     </task>
+    <task id="LOCAL-00001" summary="Login funcionando com token.">
+      <created>1509565338606</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1509565338606</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="117886000" />
+    <option name="totallyTimeSpent" value="136193000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -372,6 +413,11 @@
   <component name="VcsContentAnnotationSettings">
     <option name="myLimit" value="2678400000" />
   </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="Login funcionando com token." />
+    <MESSAGE value="Inicio Dashboard, implementação da primeira guard e primeiro http interceptor" />
+    <option name="LAST_COMMIT_MESSAGE" value="Inicio Dashboard, implementação da primeira guard e primeiro http interceptor" />
+  </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
       <option name="time" value="2" />
@@ -379,11 +425,6 @@
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/index.html" />
-    <entry file="file://$PROJECT_DIR$/tsconfig.json" />
-    <entry file="file://$PROJECT_DIR$/src/app/app.component.ts" />
-    <entry file="file://$PROJECT_DIR$/src/app/login/login.component.css" />
-    <entry file="file://$PROJECT_DIR$/protractor.conf.js" />
     <entry file="file://$PROJECT_DIR$/.bowerrc" />
     <entry file="file://$PROJECT_DIR$/.angular-cli.json" />
     <entry file="file://$PROJECT_DIR$/.editorconfig" />
@@ -423,27 +464,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/client/tslint.json">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="85">
-          <caret line="5" column="35" lean-forward="true" selection-start-line="5" selection-start-column="35" selection-end-line="5" selection-end-column="35" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/client/src/app/app.component.ts">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="136">
-          <caret line="8" column="16" lean-forward="false" selection-start-line="8" selection-start-column="16" selection-end-line="8" selection-end-column="16" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/client/src/app/app.component.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="34">
-          <caret line="2" column="17" lean-forward="false" selection-start-line="2" selection-start-column="17" selection-end-line="2" selection-end-column="17" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/server/package.json">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
@@ -466,55 +486,13 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/server/controllers/auth_controller.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="153">
-          <caret line="9" column="29" lean-forward="false" selection-start-line="9" selection-start-column="29" selection-end-line="9" selection-end-column="29" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/client/src/app/dashboard/dashboard.component.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="85">
-          <caret line="5" column="0" lean-forward="false" selection-start-line="5" selection-start-column="0" selection-end-line="5" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/client/src/app/interceptors/token_interceptor.ts">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="323">
-          <caret line="19" column="29" lean-forward="false" selection-start-line="19" selection-start-column="29" selection-end-line="19" selection-end-column="29" />
-          <folding>
-            <element signature="e#0#51#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/server/app.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-434">
-          <caret line="10" column="0" lean-forward="false" selection-start-line="10" selection-start-column="0" selection-end-line="10" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/client/src/app/_services/http.service.ts">
+    <entry file="file://$PROJECT_DIR$/client/src/app/services/http.service.ts">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="25">
           <caret line="8" column="13" lean-forward="false" selection-start-line="8" selection-start-column="13" selection-end-line="8" selection-end-column="13" />
           <folding>
-            <element signature="e#0#49#0" expanded="true" />
+            <element signature="e#0#49#0" expanded="false" />
           </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/client/src/app/dashboard/dashboard.component.ts">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="238">
-          <caret line="19" column="39" lean-forward="true" selection-start-line="19" selection-start-column="39" selection-end-line="19" selection-end-column="39" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -522,23 +500,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="135">
           <caret line="1407" column="4" lean-forward="false" selection-start-line="1407" selection-start-column="4" selection-end-line="1407" selection-end-column="4" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/client/src/app/app.module.ts">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="110">
-          <caret line="50" column="16" lean-forward="true" selection-start-line="50" selection-start-column="16" selection-end-line="50" selection-end-column="16" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/server/routes/auth.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="68">
-          <caret line="4" column="33" lean-forward="false" selection-start-line="4" selection-start-column="33" selection-end-line="4" selection-end-column="33" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -550,39 +511,169 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/server/routes/users.js">
+    <entry file="file://$PROJECT_DIR$/client/src/app/util/guards/authenticated.guard.ts">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="221">
-          <caret line="13" column="0" lean-forward="false" selection-start-line="13" selection-start-column="0" selection-end-line="13" selection-end-column="0" />
+        <state relative-caret-position="238">
+          <caret line="14" column="16" lean-forward="true" selection-start-line="14" selection-start-column="16" selection-end-line="14" selection-end-column="16" />
+          <folding>
+            <element signature="e#0#43#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/client/tslint.json">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="119">
+          <caret line="70" column="39" lean-forward="false" selection-start-line="70" selection-start-column="39" selection-end-line="70" selection-end-column="39" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/server/services/auth.service.js">
+    <entry file="file://$PROJECT_DIR$/server/controllers/auth_controller.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="323">
-          <caret line="32" column="0" lean-forward="true" selection-start-line="32" selection-start-column="0" selection-end-line="32" selection-end-column="0" />
+        <state relative-caret-position="221">
+          <caret line="13" column="35" lean-forward="false" selection-start-line="13" selection-start-column="35" selection-end-line="13" selection-end-column="35" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/server/routes/auth.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="85">
+          <caret line="5" column="0" lean-forward="true" selection-start-line="5" selection-start-column="0" selection-end-line="5" selection-end-column="0" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/client/src/app/login/login.component.ts">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="714">
-          <caret line="42" column="3" lean-forward="true" selection-start-line="42" selection-start-column="3" selection-end-line="42" selection-end-column="3" />
+        <state relative-caret-position="127">
+          <caret line="50" column="49" lean-forward="true" selection-start-line="50" selection-start-column="49" selection-end-line="50" selection-end-column="49" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/server/routes/users.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="136">
+          <caret line="8" column="48" lean-forward="false" selection-start-line="8" selection-start-column="48" selection-end-line="8" selection-end-column="48" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/client/src/app/util/interceptors/token_interceptor.ts">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="68">
+          <caret line="10" column="0" lean-forward="false" selection-start-line="10" selection-start-column="0" selection-end-line="10" selection-end-column="13" />
           <folding>
-            <element signature="e#0#59#0" expanded="true" />
+            <element signature="e#0#51#0" expanded="false" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/client/src/app/_services/auth.service.ts">
+    <entry file="file://$PROJECT_DIR$/server/services/auth.service.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="102">
-          <caret line="6" column="0" lean-forward="false" selection-start-line="6" selection-start-column="0" selection-end-line="6" selection-end-column="0" />
+        <state relative-caret-position="221">
+          <caret line="23" column="30" lean-forward="false" selection-start-line="23" selection-start-column="30" selection-end-line="23" selection-end-column="30" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/server/app.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="17">
+          <caret line="10" column="0" lean-forward="false" selection-start-line="10" selection-start-column="0" selection-end-line="10" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/client/src/app/services/auth.service.ts">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="229">
+          <caret line="41" column="22" lean-forward="true" selection-start-line="41" selection-start-column="22" selection-end-line="41" selection-end-column="22" />
           <folding>
-            <element signature="e#0#43#0" expanded="true" />
+            <element signature="e#0#43#0" expanded="false" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/client/src/app/dashboard/dashboard.component.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/client/src/app/app.component.ts">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="153">
+          <caret line="9" column="1" lean-forward="true" selection-start-line="9" selection-start-column="1" selection-end-line="9" selection-end-column="1" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/client/src/app/app.component.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="34">
+          <caret line="2" column="44" lean-forward="false" selection-start-line="2" selection-start-column="44" selection-end-line="2" selection-end-column="44" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/client/src/app/util/interceptors/auth.interceptor.ts">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="400">
+          <caret line="34" column="7" lean-forward="false" selection-start-line="34" selection-start-column="7" selection-end-line="34" selection-end-column="7" />
+          <folding>
+            <element signature="e#0#30#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/client/src/app/dashboard/dashboard.component.ts">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="51">
+          <caret line="3" column="48" lean-forward="false" selection-start-line="3" selection-start-column="48" selection-end-line="3" selection-end-column="48" />
+          <folding>
+            <element signature="e#0#50#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/client/src/app/dashboard/modulos/principal/principal.component.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="51">
+          <caret line="3" column="8" lean-forward="true" selection-start-line="3" selection-start-column="8" selection-end-line="3" selection-end-column="8" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/client/src/app/app.module.ts">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="442">
+          <caret line="41" column="4" lean-forward="false" selection-start-line="41" selection-start-column="7" selection-end-line="44" selection-end-column="8" />
+          <folding>
+            <element signature="e#0#58#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/client/src/app/dashboard/modulos/principal/principal.component.ts">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="332">
+          <caret line="23" column="29" lean-forward="true" selection-start-line="23" selection-start-column="29" selection-end-line="23" selection-end-column="29" />
+          <folding>
+            <element signature="e#0#48#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/client/src/app/dashboard/dashboard.component.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="306">
+          <caret line="18" column="29" lean-forward="true" selection-start-line="18" selection-start-column="29" selection-end-line="18" selection-end-column="29" />
+          <folding />
         </state>
       </provider>
     </entry>

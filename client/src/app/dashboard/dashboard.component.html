@@ -1,5 +1,26 @@
 <div class="ui-g">
-  <div class="ui-g-2">
-    <button type="button" pButton (click)="onLogOut()" icon="fa-close" label="Logout"></button>
+  <div class="ui-g-12">
+    <p-tabView orientation="left">
+      <p-tabPanel header="Dashboard">
+        <p>Dashboard</p>
+      </p-tabPanel>
+      <p-tabPanel header="Principal">
+        <app-principal></app-principal>
+      </p-tabPanel>
+
+      <!--<p-tabPanel header="Header 2">-->
+      <!--Content 2-->
+      <!--</p-tabPanel>-->
+      <!--<p-tabPanel header="Header 3">-->
+      <!--Content 3-->
+      <!--</p-tabPanel>-->
+    </p-tabView>
   </div>
+  <!--<div class="ui-g-2">-->
+  <!--<button type="button" pButton (click)="onLogOut()" icon="fa-close" label="Logout"></button>-->
+  <!--</div>  -->
+  <!--<div class="ui-g-2">-->
+  <!--<button type="button" pButton (click)="onTesteToken()" icon="fa-close" label="Teste"></button>-->
+  <!--</div>-->
+  <!--<p>{{retorno}}</p>-->
 </div>

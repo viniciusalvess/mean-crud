@@ -24,7 +24,7 @@ function login(aEmail, aPassword) {
             deferred.resolve({
                 username: user.username,
                 email: user.email,
-                token: jwt.sign({username: user.username, email: user.email}, config.secret)
+                token: jwt.sign({username: user.username, email: user.email}, config.secret, { expiresIn: 60})
             });
         } else {
             deferred.reject('Email ou Senha é inválido.');

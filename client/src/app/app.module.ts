@@ -1,12 +1,13 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { NgModule } from '@angular/core';
+import {CUSTOM_ELEMENTS_SCHEMA, NgModule} from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
 import { RouterModule } from '@angular/router';
 import {
-  InputTextModule, PasswordModule, ButtonModule, DataTableModule, DialogModule, FieldsetModule, MessagesModule, GrowlModule
+  InputTextModule, PasswordModule, ButtonModule, DataTableModule, DialogModule, FieldsetModule, MessagesModule, GrowlModule,
+  TabViewModule, MenubarModule, MenuItem
 } from 'primeng/primeng';
 
 
@@ -16,17 +17,28 @@ import { DashboardComponent } from './dashboard/dashboard.component';
 import { HttpClientModule } from '@angular/common/http';
 import { ReactiveFormsModule } from '@angular/forms';
 import { UserRegisterComponent } from './user-register/user-register.component';
-import {HttpService} from './_services/http.service';
 import { HTTP_INTERCEPTORS } from '@angular/common/http';
-import {TokenInterceptor} from './interceptors/token_interceptor';
-import {AuthService} from './_services/auth.service';
+import {TokenInterceptor} from './util/interceptors/token_interceptor';
+import {AuthService} from './services/auth.service';
+import {AuthenticatedGuard} from './util/guards/authenticated.guard';
+import {AuthInterceptor} from './util/interceptors/auth.interceptor';
+import {PrincipalComponent} from './dashboard/modulos/principal/principal.component';
 
 const appRoutes = [
   { path : 'index', component : AppComponent },
-  { path : 'dashboard', component : DashboardComponent },
+  { path : 'dashboard', component : DashboardComponent, canActivate: [AuthenticatedGuard] },
   {
     path : 'login',
     component: LoginComponent,
+    // children : [
+    //   { path : 'logina', component: LoginfilhoaComponent },
+    //   { path : 'loginb', component: LoginfilhobComponent },
+    // ]
+  },
+
+  {
+    path : 'dashboard/principal',
+    component: PrincipalComponent,
     // children : [
     //   { path : 'logina', component: LoginfilhoaComponent },
     //   { path : 'loginb', component: LoginfilhobComponent },
@@ -42,6 +54,7 @@ const appRoutes = [
     LoginComponent,
     DashboardComponent,
     UserRegisterComponent,
+    PrincipalComponent
   ],
   imports: [
     BrowserModule,
@@ -55,15 +68,22 @@ const appRoutes = [
       appRoutes,
       { enableTracing: true }
     ),
-    InputTextModule, ButtonModule, DataTableModule, DialogModule, FieldsetModule, PasswordModule, MessagesModule, GrowlModule
+    InputTextModule, ButtonModule, DataTableModule, DialogModule, FieldsetModule, PasswordModule, MessagesModule, GrowlModule,
+    TabViewModule, MenubarModule
   ],
-  providers: [AuthService,
+  providers: [AuthService, AuthenticatedGuard,
     {
       provide: HTTP_INTERCEPTORS,
       useClass: TokenInterceptor,
       multi: true
-    }
+    },
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: AuthInterceptor,
+      multi: true
+    },
   ],
+  // schemas: [CUSTOM_ELEMENTS_SCHEMA],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

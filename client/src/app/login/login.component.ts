@@ -2,7 +2,7 @@ import {Component, OnDestroy, OnInit} from '@angular/core';
 import {ActivatedRoute, Router} from '@angular/router';
 import {Response} from '@angular/http';
 import {FormGroup, FormControl, FormBuilder, Validators} from '@angular/forms';
-import {AuthService} from '../_services/auth.service';
+import {AuthService} from '../services/auth.service';
 import {Observable} from 'rxjs/Observable';
 import {Message} from 'primeng/primeng';
 import {MessageService} from 'primeng/components/common/messageservice';
