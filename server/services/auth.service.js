@@ -1,10 +1,8 @@
 var config = require('../config.json');
-var mongo = require('mongoskin');
-var db = mongo.db(config.db_url, {native_parser: true});
+var User = require('../models/user_model');
 var bcrypt = require('bcryptjs');
 var Q = require('q');
 var jwt = require('jsonwebtoken');
-db.bind('users');
 
 var authService = {
     'login': login,
@@ -15,22 +13,24 @@ module.exports = authService;
 
 function login(aEmail, aPassword) {
     var deferred = Q.defer();
-    db.users.findOne({'email': aEmail}, function (err, user) {
-        if (err) {
-            throw err;
-        }
+    User.findOne({'email': aEmail}).exec().then(function(user){
+        bcrypt.compare(aPassword, user.password,function(err, isMatch){
+            if (err) throw err;
 
-        if (user && bcrypt.compareSync(aPassword, user.password)) {
-            deferred.resolve({
-                username: user.username,
-                email: user.email,
-                token: jwt.sign({username: user.username, email: user.email}, config.secret, { expiresIn: 60})
-            });
-        } else {
-            deferred.reject('Email ou Senha é inválido.');
-        }
+            if (isMatch) {
+                deferred.resolve({
+                    username: user.name,
+                    email: user.email,
+                    token: jwt.sign({username: user.name, email: user.email}, config.secret, { expiresIn: config.token_expire})
+                });
+            } else {
+                deferred.reject(new Error('Email ou Senha é inválido.'));
+            }
+        });
+    }).catch(function(err){
+        console.log('Usuário inexistente em nosso banco de dados: ', err);
+        deferred.reject('Usuário inexistente em nosso banco de dados.');
     });
-
     return deferred.promise;
 }
 
@@ -55,7 +55,7 @@ function register(aUserObj) {
         username: aUserObj.username,
         name: aUserObj.name,
         lastname: aUserObj.lastname
-    }
+    };
 
     bcrypt.genSalt(saltRounds, function (err, salt) {
         bcrypt.hash(aUserObj.password, salt, function (err, hash) {

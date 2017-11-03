@@ -1,5 +1,6 @@
 {
-  "db_url": "mongodb://localhost:27017/local",
+  "db_url": "mongodb://localhost:27017/mean_db",
   "apiUrl": "http://localhost:3000",
-  "secret": "REPLACE THIS WITH YOUR OWN SECRET, IT CAN BE ANY STRING"
+  "secret": "REPLACE THIS WITH YOUR OWN SECRET, IT CAN BE ANY STRING",
+  "token_expire" : 3600
 }
