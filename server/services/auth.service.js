@@ -30,6 +30,7 @@ function login(aEmail, aPassword) {
     }).catch(function(err){
         console.log('Usuário inexistente em nosso banco de dados: ', err);
         deferred.reject('Usuário inexistente em nosso banco de dados.');
+    //
     });
     return deferred.promise;
 }
