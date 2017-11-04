@@ -7,7 +7,7 @@ import { HttpModule } from '@angular/http';
 import { RouterModule } from '@angular/router';
 import {
   InputTextModule, PasswordModule, ButtonModule, DataTableModule, DialogModule, FieldsetModule, MessagesModule, GrowlModule,
-  TabViewModule, MenubarModule, MenuItem
+  TabViewModule, MenubarModule, MenuItem, SharedModule
 } from 'primeng/primeng';
 
 
@@ -85,7 +85,7 @@ const appRoutes = [
       { enableTracing: true }
     ),
     InputTextModule, ButtonModule, DataTableModule, DialogModule, FieldsetModule, PasswordModule, MessagesModule, GrowlModule,
-    TabViewModule, MenubarModule
+    TabViewModule, MenubarModule, DataTableModule, SharedModule
   ],
   providers: [AuthService, AuthenticatedGuard,
     {

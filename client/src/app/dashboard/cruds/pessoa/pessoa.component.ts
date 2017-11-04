@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import {HttpClient} from '@angular/common/http';
 
 @Component({
   selector: 'app-pessoa',
@@ -6,10 +7,15 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./pessoa.component.css']
 })
 export class PessoaComponent implements OnInit {
-
-  constructor() { }
+  private posts: any;
+  constructor(private http: HttpClient) { }
 
   ngOnInit() {
+    this.http.get('https://jsonplaceholder.typicode.com/posts').subscribe(posts => {
+      this.posts = posts;
+    }, (errors) => {
+      console.log(errors);
+    });
   }
 
 }

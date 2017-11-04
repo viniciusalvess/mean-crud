@@ -1,3 +1,20 @@
-<p>
-  pessoa works!
-</p>
+<div class="ui-widget-header" style="padding:4px 10px;border-bottom: 0 none">
+  <i class="fa fa-search" style="margin:4px 4px 0 0"></i>
+  <input #gb type="text" pInputText size="50" placeholder="Filtro Global">
+</div>
+<p-dataTable [value]="posts" [rows]="10" [paginator]="true" [pageLinks]="3" [rowsPerPageOptions]="[5,10,20]" [globalFilter]="gb" [sortField]="sortF" [sortOrder]="sortO">
+  <p-column field="id" header="ID" [sortable]="true"></p-column>
+  <p-column field="userId" header="UserID" [sortable]="true"></p-column>
+  <p-column field="title" header="Title" [sortable]="true"></p-column>
+  <p-footer>
+    <div class="ui-helper-clearfix" style="width:100%">
+      <div class="ui-g-1">
+        <button type="button" pButton icon="fa-plus" style="float:left" label="Add"></button>
+      </div>
+    </div>
+  </p-footer>
+</p-dataTable>
+
+<!--<p *ngFor="let post of posts">-->
+  <!--{{post.id}}-->
+<!--</p>-->

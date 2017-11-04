@@ -1,12 +1,7 @@
 import { Injectable } from '@angular/core';
 import 'rxjs/add/operator/map';
 import {HttpClient} from '@angular/common/http';
-
-interface UserToken {
-  nome: string;
-  email: string;
-  token: string;
-}
+import {UserToken} from '../dtos/UserToken.interface';
 
 @Injectable()
 export class AuthService {
