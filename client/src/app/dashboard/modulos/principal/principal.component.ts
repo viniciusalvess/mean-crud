@@ -18,7 +18,7 @@ export class PrincipalComponent implements OnInit {
         label: 'Cadastros',
         items: [{
           label: 'Pessoa',
-          url : '/login'
+          routerLink : '/dashboard/principal/pessoa'
           // icon: 'fa-plus',
           // items: [
           //   {label: 'Project'},

@@ -23,10 +23,23 @@ import {AuthService} from './services/auth.service';
 import {AuthenticatedGuard} from './util/guards/authenticated.guard';
 import {AuthInterceptor} from './util/interceptors/auth.interceptor';
 import {PrincipalComponent} from './dashboard/modulos/principal/principal.component';
+import { NavbarComponent } from './dashboard/navbar/navbar.component';
+import { PessoaComponent } from './dashboard/cruds/pessoa/pessoa.component';
 
 const appRoutes = [
   { path : 'index', component : AppComponent },
-  { path : 'dashboard', component : DashboardComponent, canActivate: [AuthenticatedGuard] },
+  { path : 'dashboard', component : DashboardComponent, canActivate: [AuthenticatedGuard],
+    children:
+      [
+        { path : 'principal', component: PrincipalComponent,
+          children:
+            [
+              { path : 'pessoa', component: PessoaComponent }
+            ]
+        }
+
+      ]
+  },
   {
     path : 'login',
     component: LoginComponent,
@@ -54,7 +67,9 @@ const appRoutes = [
     LoginComponent,
     DashboardComponent,
     UserRegisterComponent,
-    PrincipalComponent
+    PrincipalComponent,
+    NavbarComponent,
+    PessoaComponent
   ],
   imports: [
     BrowserModule,
@@ -64,6 +79,7 @@ const appRoutes = [
     HttpClientModule,
     CommonModule,
     ReactiveFormsModule,
+    RouterModule,
     RouterModule.forRoot(
       appRoutes,
       { enableTracing: true }

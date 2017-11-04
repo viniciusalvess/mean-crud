@@ -12,8 +12,8 @@ module.exports.login = function (req, res, next){
     .then(function (user) {
         res.send(user);
     }).catch(function (err) {
-        console.log('catch: ',err);
-        res.status(400).send(err);
+        console.log(err);
+        res.status(401).send(err.message);
     });
 };
 

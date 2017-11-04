@@ -49,7 +49,11 @@ export class LoginComponent implements OnInit, OnDestroy {
     this._auth.login(this.frmLogin.value.email, this.frmLogin.value.password)
       .subscribe((user) => {
         this._router.navigateByUrl('/dashboard');
-      }, err => this.messageService.add({severity: 'warn', summary: 'Login', detail: err.error }));
+      },
+        err => {
+          this.messageService.add({severity: 'warn', summary: 'Login', detail: err.error });
+        }
+      );
   }
 
   ngOnDestroy() {
