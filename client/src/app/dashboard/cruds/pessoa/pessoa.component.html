@@ -12,11 +12,6 @@
         <button class="ui-button-secondary" type="button" pButton icon="fa-plus" label="Adicionar"></button>
       </div>
     </div>
-    <!--<p-header>-->
-      <!--&lt;!&ndash;<div class="ui-g-1">&ndash;&gt;-->
-        <!--<button type="button" pButton icon="fa-plus" label="Add" style="width: 100px;"></button>-->
-      <!--&lt;!&ndash;</div>&ndash;&gt;-->
-    <!--</p-header>-->
     <p-dataTable [value]="posts" [rows]="10" [paginator]="true" [pageLinks]="3" [rowsPerPageOptions]="[5,10,20]"
                  [globalFilter]="gb" [sortField]="sortF" [sortOrder]="sortO" selectionMode="single"
                  [(selection)]="selectedPost1"
