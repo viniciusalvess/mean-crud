@@ -7,9 +7,8 @@ import { HttpModule } from '@angular/http';
 import { RouterModule } from '@angular/router';
 import {
   InputTextModule, PasswordModule, ButtonModule, DataTableModule, DialogModule, FieldsetModule, MessagesModule, GrowlModule,
-  TabViewModule, MenubarModule, MenuItem, SharedModule
+  TabViewModule, MenubarModule, MenuItem, SharedModule, ContextMenuModule
 } from 'primeng/primeng';
-
 
 import { AppComponent } from './app.component';
 import { LoginComponent } from './login/login.component';
@@ -85,7 +84,7 @@ const appRoutes = [
       { enableTracing: true }
     ),
     InputTextModule, ButtonModule, DataTableModule, DialogModule, FieldsetModule, PasswordModule, MessagesModule, GrowlModule,
-    TabViewModule, MenubarModule, DataTableModule, SharedModule
+    TabViewModule, MenubarModule, DataTableModule, SharedModule, ContextMenuModule
   ],
   providers: [AuthService, AuthenticatedGuard,
     {
