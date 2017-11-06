@@ -9,16 +9,24 @@
         <input #gb type="text" pInputText placeholder="Filtro Global">
       </div>
       <div class="ui-sm-6 ui-md-2 ui-lg-2 text-right">
-        <button class="ui-button-secondary" type="button" pButton icon="fa-plus" label="Adicionar"></button>
+        <button class="ui-button-secondary" [routerLink]="['create']" type="button" pButton icon="fa-plus" label="Adicionar"></button>
       </div>
     </div>
-    <p-dataTable [value]="posts" [rows]="10" [paginator]="true" [pageLinks]="3" [rowsPerPageOptions]="[5,10,20]"
+    <p-dataTable [value]="pessoas" [rows]="10" [paginator]="true" [pageLinks]="3" [rowsPerPageOptions]="[5,10,20]"
                  [globalFilter]="gb" [sortField]="sortF" [sortOrder]="sortO" selectionMode="single"
-                 [(selection)]="selectedPost1"
-                 dataKey="id" [contextMenu]="cm">
-      <p-column field="id" header="ID" [sortable]="true"></p-column>
-      <p-column field="userId" header="UserID" [sortable]="true"></p-column>
-      <p-column field="title" header="Title" [sortable]="true"></p-column>
+                 [(selection)]="selectedPessoa"
+                 dataKey="_id" [contextMenu]="cm">
+      <p-column field="_id" header="ID" [sortable]="true"></p-column>
+      <p-column field="nome" header="Nome" [sortable]="true"></p-column>
+      <p-column field="nascimento" header="Nascimento" [sortable]="true">
+        <ng-template let-col let-pessoa="rowData" pTemplate="body">
+          {{pessoa[col.field] | date:"dd/MM/yyyy"}}
+          <!--<span [style.color]="pessoacar[col.field]">{{car[col.field]}}</span>-->
+        </ng-template>
+        <!--<template pTemplate="body" let-order="rowData">-->
+          <!--{{nascimento | date:'shortDate''}}-->
+        <!--</template>-->
+      </p-column>
       <!--<p-footer>-->
         <!--{{selectedPost1 ? selectedPost1.id : ''}}-->
       <!--</p-footer>-->

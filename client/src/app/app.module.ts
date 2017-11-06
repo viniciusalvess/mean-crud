@@ -7,7 +7,7 @@ import { HttpModule } from '@angular/http';
 import { RouterModule } from '@angular/router';
 import {
   InputTextModule, PasswordModule, ButtonModule, DataTableModule, DialogModule, FieldsetModule, MessagesModule, GrowlModule,
-  TabViewModule, MenubarModule, MenuItem, SharedModule, ContextMenuModule
+  TabViewModule, MenubarModule, MenuItem, SharedModule, ContextMenuModule, CalendarModule
 } from 'primeng/primeng';
 
 import { AppComponent } from './app.component';
@@ -24,6 +24,9 @@ import {AuthInterceptor} from './util/interceptors/auth.interceptor';
 import {PrincipalComponent} from './dashboard/modulos/principal/principal.component';
 import { NavbarComponent } from './dashboard/navbar/navbar.component';
 import { PessoaComponent } from './dashboard/cruds/pessoa/pessoa.component';
+import { PessoaFormComponent } from './dashboard/cruds/pessoa/pessoa-form/pessoa-form.component';
+import {MsgService} from './services/msg.service';
+import {MessageService} from 'primeng/components/common/messageservice';
 
 const appRoutes = [
   { path : 'index', component : AppComponent },
@@ -33,7 +36,9 @@ const appRoutes = [
         { path : 'principal', component: PrincipalComponent,
           children:
             [
-              { path : 'pessoa', component: PessoaComponent }
+              { path : 'pessoa', component: PessoaComponent },
+              { path : 'pessoa/create', component: PessoaFormComponent, name: 'PessoaCreate' },
+              { path : 'pessoa/:id/edit', component: PessoaFormComponent, name: 'PessoaEdit' }
             ]
         }
 
@@ -68,7 +73,8 @@ const appRoutes = [
     UserRegisterComponent,
     PrincipalComponent,
     NavbarComponent,
-    PessoaComponent
+    PessoaComponent,
+    PessoaFormComponent
   ],
   imports: [
     BrowserModule,
@@ -84,7 +90,7 @@ const appRoutes = [
       { enableTracing: true }
     ),
     InputTextModule, ButtonModule, DataTableModule, DialogModule, FieldsetModule, PasswordModule, MessagesModule, GrowlModule,
-    TabViewModule, MenubarModule, DataTableModule, SharedModule, ContextMenuModule
+    TabViewModule, MenubarModule, DataTableModule, SharedModule, ContextMenuModule, CalendarModule
   ],
   providers: [AuthService, AuthenticatedGuard,
     {

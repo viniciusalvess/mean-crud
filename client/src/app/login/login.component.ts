@@ -5,6 +5,7 @@ import {FormGroup, FormControl, FormBuilder, Validators} from '@angular/forms';
 import {AuthService} from '../services/auth.service';
 import {Observable} from 'rxjs/Observable';
 import {Message} from 'primeng/primeng';
+import {MsgService} from '../services/msg.service';
 import {MessageService} from 'primeng/components/common/messageservice';
 
 // import {HttpClient} from "@angular/common/http";
@@ -13,7 +14,7 @@ import {MessageService} from 'primeng/components/common/messageservice';
   selector: 'app-login',
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.css'],
-  providers: [AuthService, MessageService]
+  providers: [AuthService, MsgService, MessageService]
 })
 export class LoginComponent implements OnInit, OnDestroy {
 
@@ -23,7 +24,7 @@ export class LoginComponent implements OnInit, OnDestroy {
   constructor(private _auth: AuthService,
     private _formBuilder: FormBuilder,
     private _router: Router,
-    private messageService: MessageService
+    private messageService: MsgService
   ) {}
 
   ngOnInit() {
@@ -51,7 +52,7 @@ export class LoginComponent implements OnInit, OnDestroy {
         this._router.navigateByUrl('/dashboard');
       },
         err => {
-          this.messageService.add({severity: 'warn', summary: 'Login', detail: err.error });
+          this.messageService.warn(err.error);
         }
       );
   }

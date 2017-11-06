@@ -1,0 +1,45 @@
+<div class="ui-g">
+  <div class="ui-g-12">
+    <div class="card">
+      <div class="card-header">
+        Cadastro de Pessoa
+      </div>
+      <div class="card-body">
+        <form [formGroup]="frmPessoa" (ngSubmit)="onSubmit()">
+          <div class="ui-fluid">
+            <div class="ui-g">
+              <div class="ui-lg-10 ui-md-8 ui-sm-12">
+                <span class="ui-float-la  bel">
+                    <input id="nome" type="text" pInputText formControlName="nome" autofocus>
+                    <label for="nome">Nome</label>
+                </span>
+              </div>
+              <div class="ui-lg-2 ui-md-4 ui-sm-12">
+                <span class="ui-float-label">
+                  <p-calendar id="nascimento" [(ngModel)]="nascimento" formControlName="nascimento" dateFormat="dd/mm/yy"></p-calendar>
+                  <label for="nascimento">Nascimento</label>
+                </span>
+              </div>
+              <!--<div class="ui-g-12">-->
+              <!--<span class="ui-float-label">-->
+              <!--<input id="password"-->
+              <!--promptLabel="Informe a senha"-->
+              <!--weakLabel="Senha Fraca"-->
+              <!--mediumLabel="Senha Média"-->
+              <!--strongLabel="Senha Forte"-->
+              <!--type="password" pPassword formControlName="password">-->
+              <!--<label for="password">Senha</label>-->
+              <!--</span>-->
+              <!--</div>-->
+
+              <p-growl [(value)]="msgs"></p-growl>
+            </div>
+          </div>
+          <div class="ui-g-12">
+            <button pButton type="submit" label="Salvar" [disabled]="!frmPessoa.valid"></button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
