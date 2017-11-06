@@ -17,13 +17,13 @@ export class PessoaFormComponent implements OnInit {
   private frmPessoa: FormGroup;
   private msgs: Message[] = [];
   private dtNascimento: Date;
+  private isEditing: boolean;
 
   constructor(
     private frmBuilder: FormBuilder,
     private pessoaService: PessoaService,
     private msgService: MsgService,
-    private routeParams: ActivatedRoute,
-    private http: HttpClient
+    private routeParams: ActivatedRoute
   ) { }
 
   ngOnInit() {
@@ -35,22 +35,36 @@ export class PessoaFormComponent implements OnInit {
     let p;
     this.routeParams.params.subscribe(params => p = params['id']);
     if (p) {
-      this.http.post('api/pessoa/edit', {id: p}).subscribe((resp: any) => {
-        // console.log(resp);
+      this.pessoaService.edit(p).subscribe((resp: any) => {
+        this.isEditing = true;
         this.dtNascimento = new Date(resp.nascimento);
-        // console.log(resp.nascimento);
         this.frmPessoa.patchValue({nome: resp.nome});
-        // this.frmPessoa.patchValue(resp);
-        // this.frmPessoa.setValue({nome: resp.nome});
-        // this.frmPessoa.setValue({nascimento: this.dtNascimento.getDate()});
       }, err => {
+        this.msgService.error(err.toString());
         console.log(err);
       });
     }
   }
 
   onSubmit() {
+    if (this.isEditing) {
+      this.doUpdate();
+    } else {
+      this.doSave();
+    }
+  }
+
+  doSave() {
     this.pessoaService.salve(this.frmPessoa.getRawValue()).subscribe((ret: Response) => {
+      this.msgService.success(ret.toString());
+      this.frmPessoa.reset();
+    }, err => {
+      this.msgService.error(err.toString());
+    });
+  }
+
+  doUpdate() {
+    this.pessoaService.update(this.frmPessoa.getRawValue()).subscribe((ret: Response) => {
       this.msgService.success(ret.toString());
       this.frmPessoa.reset();
     }, err => {

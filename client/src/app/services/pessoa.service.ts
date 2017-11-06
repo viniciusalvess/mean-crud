@@ -12,6 +12,10 @@ export class PessoaService {
     return this.http.post('/api/pessoa/create', pessoa);
   }
 
+  edit(aId: any) {
+    return this.http.post('api/pessoa/edit', {id: aId});
+  }
+
   update(pessoa: Pessoa) {
     return this.http.post('/api/pessoa/update', pessoa);
   }
