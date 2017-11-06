@@ -9,14 +9,14 @@
           <div class="ui-fluid">
             <div class="ui-g">
               <div class="ui-lg-10 ui-md-8 ui-sm-12">
-                <span class="ui-float-la  bel">
-                    <input id="nome" type="text" pInputText formControlName="nome" autofocus>
+                <span class="ui-float-label">
+                    <input id="nome" type="text" pInputText formControlName="nome">
                     <label for="nome">Nome</label>
                 </span>
               </div>
               <div class="ui-lg-2 ui-md-4 ui-sm-12">
                 <span class="ui-float-label">
-                  <p-calendar id="nascimento" [(ngModel)]="nascimento" formControlName="nascimento" dateFormat="dd/mm/yy"></p-calendar>
+                  <p-calendar id="nascimento" [(ngModel)]="dtNascimento" formControlName="nascimento" dateFormat="dd/mm/yy"></p-calendar>
                   <label for="nascimento">Nascimento</label>
                 </span>
               </div>

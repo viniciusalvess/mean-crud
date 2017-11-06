@@ -36,10 +36,13 @@ export class PessoaFormComponent implements OnInit {
     this.routeParams.params.subscribe(params => p = params['id']);
     if (p) {
       this.http.post('api/pessoa/edit', {id: p}).subscribe((resp: any) => {
-        console.log(new Date(resp.nascimento));
-        this.frmPessoa.patchValue(resp);
+        // console.log(resp);
+        this.dtNascimento = new Date(resp.nascimento);
+        // console.log(resp.nascimento);
+        this.frmPessoa.patchValue({nome: resp.nome});
+        // this.frmPessoa.patchValue(resp);
         // this.frmPessoa.setValue({nome: resp.nome});
-        // this.frmPessoa.setValue({nascimento: new Date(resp.nascimento)});
+        // this.frmPessoa.setValue({nascimento: this.dtNascimento.getDate()});
       }, err => {
         console.log(err);
       });
