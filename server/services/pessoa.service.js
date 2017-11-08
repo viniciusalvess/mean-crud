@@ -5,7 +5,8 @@ var pessoaService = {
     'save': save,
     'edit': edit,
     'listAll': listAll,
-    'update': update
+    'update': update,
+    'remove': remove
 };
 
 module.exports = pessoaService;
@@ -40,4 +41,8 @@ function listAll() {
 
 function update(aId,aPessoa){
     return PessoaModel.findByIdAndUpdate(aId, { $set: aPessoa}, { new: true });
+}
+
+function remove(aId){
+    return PessoaModel.findByIdAndRemove(aId).exec();
 }

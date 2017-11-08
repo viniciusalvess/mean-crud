@@ -20,7 +20,7 @@ export class PessoaService {
       return this.http.put('/api/pessoa/update/' + aId, pessoa);
   }
 
-  delete(pessoa: Pessoa) {
-    return this.http.post('/api/pessoa/delete', pessoa);
+  remove(aId: any) {
+    return this.http.get('/api/pessoa/' + aId + '/delete');
   }
 }

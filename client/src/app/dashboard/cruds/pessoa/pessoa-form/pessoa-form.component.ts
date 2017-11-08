@@ -69,7 +69,7 @@ export class PessoaFormComponent implements OnInit {
     this.pessoaService.update(this.editId, this.frmPessoa.getRawValue()).subscribe((ret: any) => {
       // this.msgService.success('Pessoa atualizada com sucesso ! ' + ret.nome);
       // this.frmPessoa.reset();
-      this.router.navigate(['/dashboard/principal/pessoa', { message: 'Pessoa atualizada com sucesso ! ' + ret.nome } ]);
+      this.router.navigate(['/dashboard/principal/pessoa', { message: 'Pessoa atualizada com sucesso ! ' + ret.nome }]);
     }, err => {
       this.msgService.error(err.toString());
     });

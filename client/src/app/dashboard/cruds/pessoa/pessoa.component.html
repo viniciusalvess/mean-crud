@@ -9,14 +9,14 @@
         <input #gb type="text" pInputText placeholder="Filtro Global">
       </div>
       <div class="ui-sm-6 ui-md-2 ui-lg-2 text-right">
-        <button class="ui-button-secondary" [routerLink]="['create']" type="button" pButton icon="fa-plus" label="Adicionar"></button>
+        <button class="ui-button-secondary" [routerLink]="['/dashboard/principal/pessoa/create']" type="button" pButton icon="fa-plus" label="Adicionar"></button>
       </div>
     </div>
     <p-dataTable [value]="pessoas" [rows]="10" [paginator]="true" [pageLinks]="3" [rowsPerPageOptions]="[5,10,20]"
                  [globalFilter]="gb" [sortField]="sortF" [sortOrder]="sortO" selectionMode="single"
                  [(selection)]="selectedPessoa"
                  dataKey="_id" [contextMenu]="cm">
-      <p-column field="_id" header="ID" [sortable]="true"></p-column>
+      <!--<p-column field="_id" header="ID" [sortable]="true"></p-column>-->
       <p-column field="nome" header="Nome" [sortable]="true"></p-column>
       <p-column field="nascimento" header="Nascimento" [sortable]="true">
         <ng-template let-col let-pessoa="rowData" pTemplate="body">
@@ -34,4 +34,11 @@
   </div>
   <p-contextMenu #cm [model]="items" appendTo="body"></p-contextMenu>
   <p-growl [value]="msgs"></p-growl>
+
+  <p-confirmDialog header="Confirmação" icon="fa fa-question-circle" width="425" #cd>
+    <p-footer>
+      <button type="button" class="ui-button-secondary" pButton icon="fa-close" label="Não" (click)="cd.reject()"></button>
+      <button type="button" pButton icon="fa-check" label="Sim" (click)="cd.accept()"></button>
+    </p-footer>
+  </p-confirmDialog>
 </div>

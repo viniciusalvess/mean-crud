@@ -35,3 +35,12 @@ module.exports.update = function (req, res, next){
         res.status(401).json(err.message);
     });
 };
+
+module.exports.delete = function (req, res, next){
+    pessoaService.remove(req.params.id).then(function(pes){
+        res.json(pes.nome + ' Excluído com sucesso');
+    }).catch(function(err){
+        console.log('Erro ao excluir Pessoa : ', err, req.params.id);
+        res.status(401).json(err.message);
+    });
+};

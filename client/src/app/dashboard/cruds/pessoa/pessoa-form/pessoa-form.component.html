@@ -2,7 +2,7 @@
   <div class="ui-g-12">
     <div class="card">
       <div class="card-header">
-        Cadastro de Pessoa
+        {{isEditing ? 'Atualizando Pessoa: ' + this.frmPessoa.get('nome').value : 'Cadastrando Nova Pessoa'}}
       </div>
       <div class="card-body">
         <form [formGroup]="frmPessoa" (ngSubmit)="onSubmit()">
@@ -20,23 +20,11 @@
                   <label for="nascimento">Nascimento</label>
                 </span>
               </div>
-              <!--<div class="ui-g-12">-->
-              <!--<span class="ui-float-label">-->
-              <!--<input id="password"-->
-              <!--promptLabel="Informe a senha"-->
-              <!--weakLabel="Senha Fraca"-->
-              <!--mediumLabel="Senha Média"-->
-              <!--strongLabel="Senha Forte"-->
-              <!--type="password" pPassword formControlName="password">-->
-              <!--<label for="password">Senha</label>-->
-              <!--</span>-->
-              <!--</div>-->
-
               <p-growl [(value)]="msgs"></p-growl>
             </div>
           </div>
           <div class="ui-g-12">
-            <button pButton type="submit" label="Salvar" [disabled]="!frmPessoa.valid"></button>
+            <button pButton type="submit" label="{{isEditing ? 'Atualizar' : 'Salvar'}}" [disabled]="!frmPessoa.valid"></button>
           </div>
         </form>
       </div>
