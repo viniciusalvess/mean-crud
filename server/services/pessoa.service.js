@@ -4,7 +4,8 @@ var Q = require('q');
 var pessoaService = {
     'save': save,
     'edit': edit,
-    'listAll': listAll
+    'listAll': listAll,
+    'update': update
 };
 
 module.exports = pessoaService;
@@ -35,4 +36,8 @@ function listAll() {
     });
 
     return deferred.promise;
+}
+
+function update(aId,aPessoa){
+    return PessoaModel.findByIdAndUpdate(aId, { $set: aPessoa}, { new: true });
 }

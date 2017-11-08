@@ -13,11 +13,11 @@ export class PessoaService {
   }
 
   edit(aId: any) {
-    return this.http.post('api/pessoa/edit', {id: aId});
+    return this.http.get('api/pessoa/' + aId + '/edit');
   }
 
-  update(pessoa: Pessoa) {
-    return this.http.post('/api/pessoa/update', pessoa);
+  update(aId: any, pessoa: Pessoa) {
+      return this.http.put('/api/pessoa/update/' + aId, pessoa);
   }
 
   delete(pessoa: Pessoa) {

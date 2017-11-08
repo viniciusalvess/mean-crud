@@ -19,10 +19,19 @@ module.exports.listAll = function (req, res, next){
 };
 
 module.exports.edit = function (req, res, next){
-    pessoaService.edit(req.body.id).then(function(pes){
+    pessoaService.edit(req.params.id).then(function(pes){
         res.json(pes);
     }).catch(function(err){
-        console.log('Pessoa inexistente em nosso banco de dados: ', req.body.id);
+        console.log('Pessoa inexistente em nosso banco de dados: ', err, req.body.id);
+        res.status(401).json(err.message);
+    });
+};
+
+module.exports.update = function (req, res, next){
+    pessoaService.update(req.params.id,req.body).then(function(pes){
+        res.json(pes);
+    }).catch(function(err){
+        console.log('Erro ao atualizar Pessoa : ', err, req.body.id);
         res.status(401).json(err.message);
     });
 };

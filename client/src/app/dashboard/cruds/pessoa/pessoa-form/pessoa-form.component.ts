@@ -4,8 +4,8 @@ import {Message} from 'primeng/primeng';
 import {PessoaService} from '../../../../services/pessoa.service';
 import {MsgService} from '../../../../services/msg.service';
 import {MessageService} from 'primeng/components/common/messageservice';
-import {ActivatedRoute} from '@angular/router';
-import {HttpClient} from '@angular/common/http';
+import {ActivatedRoute, Router} from '@angular/router';
+import {HttpClient, HttpParams} from '@angular/common/http';
 
 @Component({
   selector: 'app-pessoa-form',
@@ -18,25 +18,27 @@ export class PessoaFormComponent implements OnInit {
   private msgs: Message[] = [];
   private dtNascimento: Date;
   private isEditing: boolean;
+  private editId: any;
 
   constructor(
     private frmBuilder: FormBuilder,
     private pessoaService: PessoaService,
     private msgService: MsgService,
-    private routeParams: ActivatedRoute
+    private routeParams: ActivatedRoute,
+    private router: Router
   ) { }
 
   ngOnInit() {
+    this.isEditing = false;
     this.frmPessoa = this.frmBuilder.group({
       nome : [null, [Validators.required, Validators.minLength(1)]],
       nascimento : [null, [Validators.required]]
     });
 
-    let p;
-    this.routeParams.params.subscribe(params => p = params['id']);
-    if (p) {
-      this.pessoaService.edit(p).subscribe((resp: any) => {
-        this.isEditing = true;
+    this.routeParams.params.subscribe(params => this.editId = params['id']);
+    if (this.editId) {
+      this.isEditing = true;
+      this.pessoaService.edit(this.editId).subscribe((resp: any) => {
         this.dtNascimento = new Date(resp.nascimento);
         this.frmPessoa.patchValue({nome: resp.nome});
       }, err => {
@@ -64,9 +66,10 @@ export class PessoaFormComponent implements OnInit {
   }
 
   doUpdate() {
-    this.pessoaService.update(this.frmPessoa.getRawValue()).subscribe((ret: Response) => {
-      this.msgService.success(ret.toString());
-      this.frmPessoa.reset();
+    this.pessoaService.update(this.editId, this.frmPessoa.getRawValue()).subscribe((ret: any) => {
+      // this.msgService.success('Pessoa atualizada com sucesso ! ' + ret.nome);
+      // this.frmPessoa.reset();
+      this.router.navigate(['/dashboard/principal/pessoa', { message: 'Pessoa atualizada com sucesso ! ' + ret.nome } ]);
     }, err => {
       this.msgService.error(err.toString());
     });

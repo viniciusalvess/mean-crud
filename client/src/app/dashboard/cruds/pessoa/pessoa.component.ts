@@ -1,13 +1,16 @@
 import { Component, OnInit } from '@angular/core';
-import { HttpClient} from '@angular/common/http';
+import {HttpClient, HttpParams} from '@angular/common/http';
 import { MenuItem, Message } from 'primeng/primeng';
 import { ContextMenu } from 'primeng/primeng';
-import {Router} from '@angular/router';
+import {ActivatedRoute, Router} from '@angular/router';
+import {MsgService} from '../../../services/msg.service';
+import {MessageService} from 'primeng/components/common/messageservice';
 
 @Component({
   selector: 'app-pessoa',
   templateUrl: './pessoa.component.html',
-  styleUrls: ['./pessoa.component.css']
+  styleUrls: ['./pessoa.component.css'],
+  providers: [MsgService, MessageService]
 })
 export class PessoaComponent implements OnInit {
   private posts: any;
@@ -15,7 +18,12 @@ export class PessoaComponent implements OnInit {
   private selectedPessoa: any;
   private items: MenuItem[];
   private msgs: Message[];
-  constructor(private http: HttpClient, private router: Router) { }
+  constructor(
+    private http: HttpClient,
+    private router: Router,
+    private route: ActivatedRoute,
+    private msgService: MsgService
+  ) { }
 
   ngOnInit() {
     // this.http.get('https://jsonplaceholder.typicode.com/posts').subscribe(posts => {
@@ -25,8 +33,18 @@ export class PessoaComponent implements OnInit {
     //   console.log(errors);
     // });
 
-    this.http.get('/api/pessoa/list').subscribe(people => {
-      console.log(people);
+    this.msgService.success(this.route.snapshot.params['message']);
+    console.log( this.route.snapshot.params['message']);
+
+
+    // this.route
+    //   .data
+    //   .subscribe(params => {
+    //     // Defaults to 0 if no query param provided.
+    //     console.log(params[0]);
+    //   });
+
+    this.http.get('/api/pessoa/index').subscribe(people => {
       this.pessoas = people;
     }, (errors) => {
       console.log(errors);
@@ -35,14 +53,7 @@ export class PessoaComponent implements OnInit {
     this.items = [
       {label: 'Visualisar', icon: 'fa-search',
         command: (event) => {
-          this.http.post('/api/pessoa/edit', {id: this.selectedPessoa}).subscribe((pes: any) => {
-            console.log(pes);
-            this.router.navigateByUrl('/dashboard/principal/pessoa/' + pes._id + '/edit');
-            // this.posts = posts;
-          }, (errors) => {
-            console.log(errors);
-          });
-          // console.log(this.selectedPessoa);
+          this.router.navigateByUrl('/dashboard/principal/pessoa/' + this.selectedPessoa._id  + '/edit');
         }
       },
       {label: 'Excluir', icon: 'fa-close', command: (event) => console.log(this.selectedPessoa)}
