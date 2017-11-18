@@ -17,7 +17,7 @@ export class PessoaService {
   }
 
   update(aId: any, pessoa: Pessoa) {
-      return this.http.put('/api/pessoa/update/' + aId, pessoa);
+      return this.http.put('/api/pessoa/' + aId, pessoa);
   }
 
   remove(aId: any) {

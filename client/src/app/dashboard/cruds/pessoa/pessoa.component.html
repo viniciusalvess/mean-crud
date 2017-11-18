@@ -12,13 +12,26 @@
         <button class="ui-button-secondary" [routerLink]="['/dashboard/principal/pessoa/create']" type="button" pButton icon="fa-plus" label="Adicionar"></button>
       </div>
     </div>
-    <p-dataTable [value]="pessoas" [rows]="10" [paginator]="true" [pageLinks]="3" [rowsPerPageOptions]="[5,10,20]"
-                 [globalFilter]="gb" [sortField]="sortF" [sortOrder]="sortO" selectionMode="single"
+    <p-dataTable [value]="pessoas"
+                 [rows]="10"
+                 [paginator]="true"
+                 [pageLinks]="3"
+                 [rowsPerPageOptions]="[5,10,20]"
+                 [globalFilter]="gb"
+                 [sortField]="sortF"
+                 [sortOrder]="sortO"
+                 selectionMode="single"
                  [(selection)]="selectedPessoa"
-                 dataKey="_id" [contextMenu]="cm">
+                 dataKey="_id"
+                 [contextMenu]="cm"
+                 (onRowDblclick)="onTableDblClick()"
+                 (onLazyLoad)="loadPage($event)"
+                 [lazy]="true"
+                 [totalRecords]="totalRecords">
+
       <!--<p-column field="_id" header="ID" [sortable]="true"></p-column>-->
-      <p-column field="nome" header="Nome" [sortable]="true"></p-column>
-      <p-column field="nascimento" header="Nascimento" [sortable]="true">
+      <p-column field="nome" header="Nome" [sortable]="true" [filter]="true" filterPlaceholder="Search"></p-column>
+      <p-column field="nascimento" header="Nascimento" [sortable]="true" [filter]="true">
         <ng-template let-col let-pessoa="rowData" pTemplate="body">
           {{pessoa[col.field] | date:"dd/MM/yyyy"}}
           <!--<span [style.color]="pessoacar[col.field]">{{car[col.field]}}</span>-->

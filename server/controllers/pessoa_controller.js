@@ -44,3 +44,14 @@ module.exports.delete = function (req, res, next){
         res.status(401).json(err.message);
     });
 };
+
+module.exports.search = function (req, res, next){
+    // console.log(req.body);
+    // pessoaService.search(req.body);
+    pessoaService.search(req.body).then(function(msg){
+        res.json(msg);
+    }).catch(function (err) {
+        console.log(err);
+        res.status(401).json(err.message);
+    });
+};

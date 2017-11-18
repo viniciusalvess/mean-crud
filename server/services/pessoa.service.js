@@ -1,12 +1,14 @@
 var PessoaModel = require('../models/pessoa_model');
 var Q = require('q');
+var filterBuilder = require('./filter_builder.service');
 
 var pessoaService = {
     'save': save,
     'edit': edit,
     'listAll': listAll,
     'update': update,
-    'remove': remove
+    'remove': remove,
+    'search': search
 };
 
 module.exports = pessoaService;
@@ -38,6 +40,28 @@ function listAll() {
 
     return deferred.promise;
 }
+
+function search(evt) {
+    var deferred = Q.defer();
+    PessoaModel.find(filterBuilder.buildFilterFromPrimeNgLazyEvent(evt,{dateFields:['nascimento']}), function (err, pessoas) {
+        if (err) {
+            deferred.reject(new Error('Erro ao pesquisar pessoa'));
+        }
+
+        PessoaModel.count().exec(function(err, conta) {
+            if (err) {
+                deferred.reject(new Error('Erro ao contar pessoas'));
+            }
+
+            // console.log('conta', conta, 'length', pessoas.length);
+            // (pessoas.length !== evt.rows) ? pessoas.length :  conta
+            deferred.resolve({records: pessoas,count: conta});
+        });
+    }).skip(evt.first).limit(evt.rows);
+
+    return deferred.promise;
+}
+
 
 function update(aId,aPessoa){
     return PessoaModel.findByIdAndUpdate(aId, { $set: aPessoa}, { new: true });

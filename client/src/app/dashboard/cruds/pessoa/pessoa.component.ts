@@ -1,6 +1,6 @@
 import {AfterContentChecked, AfterContentInit, AfterViewInit, Component, OnInit} from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { ConfirmationService, MenuItem, Message } from 'primeng/primeng';
+import {ConfirmationService, LazyLoadEvent, MenuItem, Message} from 'primeng/primeng';
 import { ActivatedRoute, Router } from '@angular/router';
 import { MsgService } from '../../../services/msg.service';
 import { MessageService } from 'primeng/components/common/messageservice';
@@ -19,6 +19,8 @@ export class PessoaComponent implements OnInit {
   private selectedPessoa: any;
   private items: MenuItem[];
   private msgs: Message[];
+  private totalRecords: number;
+
   constructor(
     private http: HttpClient,
     private router: Router,
@@ -31,15 +33,15 @@ export class PessoaComponent implements OnInit {
   ngOnInit() {
     // console.log(this.route.snapshot.params.message);
     // this.msgService.success(this.route.snapshot.params['message']);
-    this.refreshGrid();
+    // this.refreshGrid();
 
     this.items = [
-      {label: 'Editar', icon: 'fa-search',
+      {label: 'Editar', icon: 'fa-pencil',
         command: (event) => {
-          this.router.navigateByUrl('/dashboard/principal/pessoa/' + this.selectedPessoa._id  + '/edit');
+          this.onTableDblClick();
         }
       },
-      {label: 'Excluir', icon: 'fa-close', command: (event) => { this.deleteConfirm(); } }
+      {label: 'Excluir', icon: 'fa-trash', command: (event) => { this.deleteConfirm(); } }
     ];
   }
 
@@ -65,6 +67,37 @@ export class PessoaComponent implements OnInit {
           console.log('Erro ao excluir pessoa: ', errors);
         });
       }
+    });
+  }
+
+  onTableDblClick() {
+    this.router.navigateByUrl('/dashboard/principal/pessoa/' + this.selectedPessoa._id  + '/edit');
+  }
+
+  // loadPage(event: LazyLoadEvent) {
+  //   // check the filters
+  //   if (event.filters !== undefined && event.filters['nome'] !== undefined) {
+  //     // this.example = new Server();
+  //     // this.example.name = event.filters["name"].value;
+  //     event.filters['name'].matchMode = 'contains';
+  //
+  //   }
+  //   this.serverService.getPage(this.example, event).
+  //   subscribe(
+  //     pageResponse => this.currentPage = pageResponse,
+  //     error => this.messageService.error('Could not get the results', error)
+  //   );
+  // }
+
+  loadPage(event: LazyLoadEvent) {
+    console.log(event);
+    this.http.post('/api/pessoa/search', event).subscribe((people: any) => {
+      this.pessoas = people.records;
+      this.totalRecords = people.count;
+      // console.log(this.pessoas.length());
+      this.msgService.success(this.route.snapshot.params.message); // melhorar isso aqui
+    }, (errors) => {
+      console.log(errors);
     });
   }
 }
