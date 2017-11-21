@@ -42,6 +42,7 @@ function listAll() {
 }
 
 function search(evt) {
+    console.log(evt);
     var deferred = Q.defer();
     PessoaModel.find(filterBuilder.buildFilterFromPrimeNgLazyEvent(evt,{dateFields:['nascimento']}), function (err, pessoas) {
         if (err) {

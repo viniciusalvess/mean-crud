@@ -9,8 +9,8 @@
           <div class="ui-fluid">
             <div class="ui-g">
               <div class="ui-lg-2 ui-md-3 ui-sm-12">
-                <p-radioButton label="Física" name="groupname" value="Física" [(ngModel)]="tipoPessoa"  inputId="preopt1" formControlName="tipo"></p-radioButton>
-                <p-radioButton label="Jurídica" name="groupname" value="Jurídica" [(ngModel)]="tipoPessoa" inputId="preopt2" formControlName="tipo"></p-radioButton>
+                <p-radioButton label="Física" name="groupname" value="Física" (ngModelChange)="changeFromLabels($event)"  inputId="preopt1" formControlName="tipo"></p-radioButton>
+                <p-radioButton label="Jurídica" name="groupname" value="Jurídica" (ngModelChange)="changeFromLabels($event)" inputId="preopt2" formControlName="tipo"></p-radioButton>
               </div>
               <div class="ui-lg-8 ui-md-6 ui-sm-12">
                 <span class="ui-float-label">
@@ -20,24 +20,23 @@
               </div>
               <div class="ui-lg-2 ui-md-3 ui-sm-12">
                 <span class="ui-float-label">
-                  <p-calendar id="nascimento" [(ngModel)]="dtNascimento" formControlName="nascimento" dateFormat="dd/mm/yy"></p-calendar>
-                  <label for="nascimento">Nascimento</label>
+                  <p-calendar id="nascimento" [(ngModel)]="dtNascimento" formControlName="nascimento" dateFormat="dd/mm/yy" [locale]="pt_BR"></p-calendar>
+                  <label for="nascimento">{{nascimentoLabel}}</label>
                 </span>
               </div>
               <p-growl [(value)]="msgs"></p-growl>
             </div>
             <div class="ui-g">
-              <div class="ui-lg-2 ui-md-4 ui-sm-12">
+              <div class="ui-lg-8 ui-md-4 ui-sm-12">
                 <span class="ui-float-label">
-                  <input id="nomeFantasia" formControlName="rgInsc" pInputText>
+                  <input id="nomeFantasia" formControlName="nomeFantasia" pInputText>
                   <label for="nomeFantasia">{{nomeFantasiaLabel}}</label>
                 </span>
               </div>
-            </div>
-            <div class="ui-g">
               <div class="ui-lg-2 ui-md-4 ui-sm-12">
                 <span class="ui-float-label">
-                  <p-inputMask id="cpfCnpj" formControlName="cpfCnpj" mask="{{cpfCnpjMask}}"></p-inputMask>
+                  <!--<p-inputMask id="cpfCnpj" formControlName="cpfCnpj" mask="{{cpfCnpjMask}}" unmask="true"></p-inputMask>-->
+                  <input id="cpfCnpj" formControlName="cpfCnpj" pInputText>
                   <label for="cpfCnpj">{{cpfCnpjLabel}}</label>
                 </span>
               </div>
@@ -52,6 +51,7 @@
 
           <div class="ui-g-12">
             <button pButton type="submit" label="{{isEditing ? 'Atualizar' : 'Salvar'}}" [disabled]="!frmPessoa.valid"></button>
+            <!--<button pButton type="button" label="teste" (click)="setValeMask($event)"></button>-->
           </div>
         </form>
       </div>
